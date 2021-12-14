@@ -1,0 +1,32 @@
+{
+  "fournisseur": [
+    {
+      "codeFournisseur": "G100",
+      "libelleFournisseur": "ESPRIT",
+      "active": "true",
+      "idFournisseur": 2,
+      "id": 2
+    },
+    {
+      "codeFournisseur": "Faadi",
+      "libelleFournisseur": "FaAAAADIo",
+      "active": "true",
+      "idFournisseur": 3,
+      "id": 3
+    },
+    {
+      "codeFournisseur": "ESP200",
+      "libelleFournisseur": "ESPRIT",
+      "active": "true",
+      "idFournisseur": 6,
+      "id": 6
+    },
+    {
+      "codeFournisseur": "G100",
+      "libelleFournisseur": "ESPROOO",
+      "active": "true",
+      "idFournisseur": 7,
+      "id": 7
+    }
+  ]
+}

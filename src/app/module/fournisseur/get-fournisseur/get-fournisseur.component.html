@@ -1,0 +1,257 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+
+      
+    <h4 class="modal-title" id="modal-basic-title">NEW FOURNISSEUR</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+
+       <app-add-fournisseur></app-add-fournisseur>
+
+     
+    </form>
+  </div>
+  <!-- <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div> -->
+</ng-template>
+
+
+
+
+
+
+
+<ng-template #content1 let-modal>
+  <div class="modal-header">
+
+      
+    <h4 class="modal-title" id="modal-basic-title">FOURNISSEURS SUPRIMEES</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+
+      <div class="row mb-5">
+        <div *ngFor="let li of ListFournisseurDel | searchFilter:searchValue | paginate: { itemsPerPage: 3, currentPage: p } let i=index; " class="col-3 ml-5 mt-3 border about-section-card huver">
+          <img src="{{li.image}}" alt="" class="img-fluid">
+            <b class="fa mt-4 mb-2">Fournisseur :{{ li.libelleFournisseur }}</b> 
+            <p><b>code : </b>{{ li.codeFournisseur }}</p>
+            <p><b> adresse :</b> {{ li.adresse }}</p>
+            <div class="row col-12">
+
+                <ng-template #Detail let-modal>
+                  <div class="modal-header">
+                
+                      
+                    <h4 class="modal-title" id="modal-basic-title">Detail of             <b class="fa">{{ fo.libelleFournisseur }}</b> 
+                    </h4>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    
+                    <img src="{{fo.image}}"alt="" class="img-fluid">
+                    <p><b>code : </b>{{ fo.codeFournisseur }}</p>
+                    <p><b> Email :</b> {{ fo.email }}</p>
+                    <p><b>telephone : </b>{{ fo.telephone }}</p>
+                    <p><b> adresse :</b> {{ fo.adresse }}</p>
+
+
+
+
+
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+                  </div>
+                </ng-template>
+
+                <!-- POP UPDATE -->
+                <ng-template #up let-modal>
+                  <div class="modal-header">
+                
+                      
+                    <h4 class="modal-title" id="modal-basic-title">Update FOURNISSEUR</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                
+                      <app-update-fournisseur (notif)="ggf($event)" [id]="li.idFournisseur"> </app-update-fournisseur>
+                     
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+                  </div>
+                </ng-template>
+
+              <div class="d-flex">
+                <a  class="btn btn-outline-warning fa btn-md ml-1  "  (click)="Activer(li)" > <mat-icon>add_to_photos</mat-icon>Activer <br> </a> 
+              
+              </div>
+
+                <!-- <mdb-icon fas icon="trash-alt"> </mdb-icon> -->
+            </div>
+        </div>
+    </div>
+    <pagination-controls (pageChange)="p = $event" class="mt-5"></pagination-controls>
+
+    </form>
+  </div>
+  <!-- <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div> -->
+</ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="container my-2">
+    <div class="row">
+        <h2>Liste des Fournisseurs disponibles</h2>
+    <div class="offset-5">
+        <a  class="">
+            <button class="btn btn-outline-dark btnAjout fa fa-plus-square "   (click)="open(content)" > Ajouter
+            </button>
+        </a>
+
+        <a  class="">
+          <button class="btn btn-outline-dark btnAjout fa fa-plus-square "   (click)=" GetAllFournisseur1(); open2(content1)  " > Fournisseurs Supprimeés
+          </button>
+      </a>
+  
+    </div>
+  </div>
+
+    <br>
+    <div class="row offset-6">
+        <div class="input-group">
+            
+            <label for="searchValue" class="col-sm-6 col-form-label" style="text-align: right ;"> Search </label>
+            <input type="text"  class="col-5"  [(ngModel)]="searchValue" id="search">
+        </div>
+    </div>
+</div>
+<div class="container my-3 w-100 my-3" id="about">
+    <div class="row mb-5">
+        <div *ngFor="let li of ListFournisseur | searchFilter:searchValue | paginate: { itemsPerPage: 3, currentPage: p } let i=index; " class="col-3 ml-5 mt-3 border about-section-card huver">
+          <img src="{{li.image}}" alt="" class="img-fluid">
+            <b class="fa mt-4 mb-2">Fournisseur :{{ li.libelleFournisseur }}</b> 
+            <p><b>code : </b>{{ li.codeFournisseur }}</p>
+            <p><b> adresse :</b> {{ li.adresse }}</p>
+            <div class="row col-12">
+
+                <ng-template #Detail let-modal>
+                  <div class="modal-header">
+                
+                      
+                    <h4 class="modal-title" id="modal-basic-title">Detail of             <b class="fa">{{ fo.libelleFournisseur }}</b> 
+                    </h4>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    
+                    <img src="{{fo.image}}"alt="" class="img-fluid">
+                    <p><b>code : </b>{{ fo.codeFournisseur }}</p>
+                    <p><b> Email :</b> {{ fo.email }}</p>
+                    <p><b>telephone : </b>{{ fo.telephone }}</p>
+                    <p><b> adresse :</b> {{ fo.adresse }}</p>
+
+
+
+
+
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+                  </div>
+                </ng-template>
+
+                <!-- POP UPDATE -->
+                <ng-template #up let-modal>
+                  <div class="modal-header">
+                
+                      
+                    <h4 class="modal-title" id="modal-basic-title">Update FOURNISSEUR</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                
+                      <app-update-fournisseur (notif)="ggf($event)" [id]="li.idFournisseur"> </app-update-fournisseur>
+                     
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+                  </div>
+                </ng-template>
+
+              <div class="d-flex">
+                <a  class="btn btn-outline-warning fa btn-md ml-1  "  (click)="open(up)"> <mat-icon>edit</mat-icon>Modifier <br> </a> 
+                <a  class="btn btn-outline-danger fa  btn-md ml-1 "  (click)="Delete(li)" > <mat-icon>delete_forever</mat-icon> Supprimer</a> <br>
+                <a  class="btn btn-outline-dark fa btn-md ml-1 " (click)="openn(Detail,li)" > <mat-icon>details</mat-icon> Details</a> <br>
+              </div>
+
+                <!-- <mdb-icon fas icon="trash-alt"> </mdb-icon> -->
+            </div>
+        </div>
+    </div>
+    <pagination-controls (pageChange)="p = $event" class="mt-5"></pagination-controls>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <pre>{{ closeResult }}</pre>

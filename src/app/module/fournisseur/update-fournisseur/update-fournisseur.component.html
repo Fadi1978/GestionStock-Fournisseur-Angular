@@ -1,0 +1,53 @@
+<form #modelF="ngForm">
+<h2>{{title}} </h2> <br> 
+
+    <!-- <label>Id Fournisseur </label> -->
+    <input type="number" class="form-control" name="idFournisseur"  [(ngModel)]="fournisseur.idFournisseur" #idFacture="ngModel" disabled  style="display:none"  >
+    
+    <label>Code Fournisseur</label>
+    <input type="text" class="form-control" [(ngModel)]="fournisseur.codeFournisseur" required [(ngModel)]="fournisseur.codeFournisseur" #montantFacture="ngModel" name="codeFournisseur"  >
+    
+    <label>Libelle Fournisseur</label>
+    <input type="text" class="form-control" name="libelleFournisseur" required [(ngModel)]="fournisseur.libelleFournisseur" [(ngModel)]="fournisseur.libelleFournisseur" #montantRemise="ngModel">
+    
+    
+     <label for="" class="form-label">Email </label>
+     <input type="text" class="form-control" [(ngModel)]="fournisseur.email" required [(ngModel)]="fournisseur.email" #email="ngModel" name="email"  >
+
+    <label for="" class="form-label">Telephone </label>
+    <input type="number" class="form-control" [(ngModel)]="fournisseur.telephone" required [(ngModel)]="fournisseur.telephone" #telephone="ngModel" name="telephone"  >
+   
+    <label for="" class="form-label">Adresse </label>
+    <input type="text" class="form-control" [(ngModel)]="fournisseur.adresse" required [(ngModel)]="fournisseur.adresse" #adresse="ngModel" name="adresse"  >
+   
+
+          <label for="" class="form-label">Picture</label>
+          <!-- <input formControlName="image" type="file" class="form-control" id="image"> -->
+          <input type="file" class="form-control" [(ngModel)]="fournisseur.image" required [(ngModel)]="fournisseur.image" #image="ngModel" name="image"  >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--     
+    <label>active</label>
+    <select  class="form-select" aria-label="Default select example" name="active" [(ngModel)]="fournisseur.active" #active="ngModel">
+        <option value="">--Please choose an option--</option>
+        <option value=true>true</option>
+        <option value=false>false</option>
+     </select> -->
+    
+    <input type="submit" class="btn btn-primary" value="Update" [disabled]="modelF.invalid" (click)="UpdateFournisseur(modelF.value)"> 
+</form>

@@ -1,0 +1,73 @@
+
+<div class="row">
+
+  <div class="col-md-12 col-md-offset-2">
+<form [formGroup]="FournisseurForm" (ngSubmit)="SaveFournisseur(FournisseurForm.value); ngOnInit()  " >
+    <div class="mb-3">
+     
+      <h4><label for="" class="form-label">Code Fournisseur</label></h4>
+      <input formControlName="codeFournisseur" type="text" class="form-control" id="codeFournisseur" >
+      <div *ngIf="codeFournisseur?.errors?.required"  > <span class="help-block" >code  is required.</span> <br>  <br> </div> 
+
+      
+
+      <h4> <label for="" class="form-label">Libelle Fournisseur </label> </h4>
+      <input formControlName="libelleFournisseur" type="text" class="form-control" id="libelleFournisseur">
+      <div *ngIf="libelleFournisseur?.errors?.required"  > <span class="help-block" >Libelle  is required.</span> <br>  <br> </div> 
+
+      <h4> <label for="" class="form-label">Email </label> </h4>
+      <input formControlName="email" type="text" class="form-control" id="email">
+      <div *ngIf="email?.errors?.required"  > <span class="help-block" >Email is required .</span> <br>  <br> </div> 
+      <div *ngIf="email?.errors?.pattern"  > <span class="help-block" >Email invalid .</span> <br>  <br> </div> 
+
+      <h4> <label for="" class="form-label">Telephone </label> </h4>
+      <input formControlName="telephone" type="number" class="form-control" id="telephone">
+      <div *ngIf="telephone?.errors?.required"  > <span class="help-block" >Telephone is required .</span> <br>  <br> </div> 
+      <div *ngIf="telephone?.errors?.min"  > <span class="help-block" >Telephone invalid .</span> <br>  <br> </div> 
+
+      <h4> <label for="" class="form-label">Adresse </label> </h4>
+      <input formControlName="adresse" type="text" class="form-control" id="adresse">
+      <div *ngIf="adresse?.errors?.required"  > <span class="help-block" >Adresse vide .</span> <br>  <br> </div> 
+
+      <div class="form-group">
+        <!-- <label>File Upload  </label>
+            <input type="file" accept="image/*" (change)="onSelectFile($event)">
+            <img [src]="imgURL" height="200" *ngIf="imgURL"> -->
+
+
+            <label for="" class="form-label">Picture</label>
+            <input formControlName="image" type="file" class="form-control" id="image">
+            <div *ngIf="image?.errors?.required"  > <span class="help-block" >Image invalid .</span> <br>  <br> </div> 
+
+    </div>
+      <br>
+      <!-- <select formControlName="active" class="form-select" aria-label="Default select example" name="active" id="">
+        <option value="">--Please choose an option--</option>
+        <option value=true>true</option>
+        <option value=false>false</option>
+     </select> -->
+    
+
+     <!-- <div class="form-group">
+      <label for="dateOfBirth">Date of birth</label>
+      <div class="input-group">
+        <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+        </div>
+      </div>
+    </div> -->
+    
+    
+     </div>
+     
+  <div class="modal-footer">
+
+    <button type="submit" class="btn btn-primary" [disabled]="FournisseurForm.invalid"   >Submit</button>
+  </div>
+
+  </form>
+
+  </div>
+  </div>
+  
